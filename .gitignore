@@ -1,0 +1,9 @@
+.idea
+.venv
+.coverage
+__pycache__
+*.pyc
+*.sqlite3
+*.log
+*,cover
+killall.sh

@@ -1,0 +1,66 @@
+{% extends "app/base.html" %}
+
+{% block title %}Berrymore :: {{ client.name }}{% endblock %}
+
+{% block body %}
+{% if error %}
+{{ error }}
+{% else %}
+<div align="left" style="display: inline"><font size="12px"><b>{{ client.name }}</b></font></div>
+<div align="right" style="display: inline; float: right;"><b><font size="12px">{{ balance }} UAH</font><br><br><font size="6px">{{ client.get_boxes }} box(es)</font></b></div>
+
+<br><br><br>
+
+<div align="left" style="display: inline; font-size: 20;"><b>Visits</b></div>
+
+	<div class="table">
+		<div class="table-header">
+   			<div class="header__item"><a id="user" class="filter__link" href="#">User</a></div>
+   			<div class="header__item"><a id="date" class="filter__link" href="#">Date</a></div>
+			<div class="header__item"><a id="product" class="filter__link filter__link--number" href="#">Product</a></div>
+			<div class="header__item"><a id="weight" class="filter__link filter__link--number" href="#">Weight</a></div>
+			<div class="header__item"><a id="boxes" class="filter__link filter__link--number" href="#">Boxes</a></div>
+			<div class="header__item"><a id="price_per_kg" class="filter__link filter__link--number" href="#">Price per kg</a></div>
+			<div class="header__item"><a id="netto" class="filter__link filter__link--number" href="#">Netto</a></div>
+			<div class="header__item"><a id="price" class="filter__link filter__link--number" href="#">Price</a></div>
+			<div class="header__item"><a id="boxes_in" class="filter__link filter__link--number" href="#">Boxes in</a></div>
+			<div class="header__item"><a id="boxes_out" class="filter__link filter__link--number" href="#">Boxes out</a></div>
+		</div>
+		<div class="table-content">
+        {% for visit in client.visits.all %}
+			<div class="table-row">
+                <div class="table-data">{{ visit.user }}</div>
+				<div class="table-data"><a href="/report/visit/{{ visit.id }}/">{{ visit.datetime }}</a></div>
+				<div class="table-data">{{ visit.product }}</div>
+				<div class="table-data">{{ visit.weight }}</div>
+				<div class="table-data">{{ visit.number_of_boxes }}</div>
+				<div class="table-data">{{ visit.price_per_kg }}</div>
+				<div class="table-data">{{ visit.get_netto }}</div>
+				<div class="table-data">{{ visit.get_price }}</div>
+				<div class="table-data">{{ visit.number_of_boxes_in }}</div>
+				<div class="table-data">{{ visit.number_of_boxes_out }}</div>
+			</div>
+        {% endfor %}
+		</div>
+	</div>
+
+<br>
+
+<div align="left" style="display: inline; font-size: 20;"><b>Payments</b></div>
+
+	<div class="table">
+		<div class="table-header">
+   			<div class="header__item"><a id="payment_date" class="filter__link" href="#">Date</a></div>
+			<div class="header__item"><a id="amount" class="filter__link filter__link--number" href="#">Amount</a></div>
+		</div>
+		<div class="table-content">
+        {% for payment in client.payments.all %}
+			<div class="table-row">
+				<div class="table-data">{{ payment.created }}</div>
+				<div class="table-data">{{ payment.amount }}</div>
+			</div>
+        {% endfor %}
+		</div>
+	</div>
+{% endif %}
+{% endblock %}

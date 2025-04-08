@@ -1,0 +1,76 @@
+[
+{
+    "model": "app.clientgroup",
+    "pk": "798ff38c-239e-4e73-ba0f-e48d01ca3dc0",
+    "fields": {
+        "created": "2025-04-07T08:55:36.642",
+        "modified": "2025-04-07T08:55:36.642",
+        "name": "test group"
+    }
+},
+{
+    "model": "app.client",
+    "pk": "7cf31ec5-487f-4cb9-859d-40f7845ed911",
+    "fields": {
+        "created": "2025-04-07T08:55:49.244",
+        "modified": "2025-04-07T08:55:49.244",
+        "name": "test client",
+        "group": "798ff38c-239e-4e73-ba0f-e48d01ca3dc0",
+        "phone_number": "987654321"
+    }
+},
+{
+    "model": "app.payment",
+    "pk": "1e553563-4a21-405b-b661-b8984958d41d",
+    "fields": {
+        "created": "2025-04-07T09:04:27.641",
+        "modified": "2025-04-07T09:04:27.641",
+        "client": "7cf31ec5-487f-4cb9-859d-40f7845ed911",
+        "amount": 10.0
+    }
+},
+{
+    "model": "app.product",
+    "pk": "04bcc5f3-cd80-492a-ba27-e2de78b0852a",
+    "fields": {
+        "created": "2025-04-07T09:02:03.583",
+        "modified": "2025-04-07T09:02:03.583",
+        "name": "berries"
+    }
+},
+{
+    "model": "app.user",
+    "pk": "0cae8f9b-0f77-4c7b-bb0f-c9e59a761bd8",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$FLgvi0RDiGN0ODMXZYvimi$T1stBhEEzL3snpVKpnhMJiWaRJyZYyA77FuFrYvhzSQ=",
+        "last_login": "2025-04-07T08:55:28.018",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-04-07T08:54:52.219",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "app.visit",
+    "pk": "47b485b9-b6e3-426a-a548-6ea229862398",
+    "fields": {
+        "created": "2025-04-07T09:04:09.844",
+        "modified": "2025-04-07T09:04:09.844",
+        "client": "7cf31ec5-487f-4cb9-859d-40f7845ed911",
+        "product": "04bcc5f3-cd80-492a-ba27-e2de78b0852a",
+        "datetime": "2025-04-07T09:04:09.844",
+        "weight": 10.0,
+        "number_of_boxes": 1,
+        "price_per_kg": 7.0,
+        "user": "0cae8f9b-0f77-4c7b-bb0f-c9e59a761bd8",
+        "number_of_boxes_in": 0,
+        "number_of_boxes_out": 1
+    }
+}
+]

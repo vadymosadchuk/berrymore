@@ -1,0 +1,26 @@
+{% extends "app/base.html" %}
+
+{% block title %}Berrymore :: Clients{% endblock %}
+
+{% block body %}
+	<div class="table">
+		<div class="table-header">
+   			<div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
+   			<div class="header__item"><a id="phone_number" class="filter__link" href="#">Phone number</a></div>
+			<div class="header__item"><a id="group" class="filter__link filter__link--number" href="#">Group</a></div>
+			<div class="header__item"><a id="boxes" class="filter__link filter__link--number" href="#">Boxes</a></div>
+			<div class="header__item"><a id="balance" class="filter__link filter__link--number" href="#">Balance</a></div>
+		</div>
+		<div class="table-content">
+        {% for client in clients %}
+			<div class="table-row">
+                <div class="table-data"><a href="/client/{{ client.id }}/">{{ client.name }}</a></div>
+				<div class="table-data">{{ client.phone_number }}</div>
+				<div class="table-data">{{ client.group }}</div>
+				<div class="table-data">{{ client.boxes }}</div>
+				<div class="table-data">{{ client.balance }}</div>
+			</div>
+        {% endfor %}
+		</div>
+	</div>
+{% endblock %}

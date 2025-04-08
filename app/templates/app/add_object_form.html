@@ -1,0 +1,64 @@
+{% extends "app/base.html" %}
+
+{% block title %}Berrymore :: Add {{ object_type }}{% endblock %}
+
+{% block body %}
+
+<div align="left" style="display: inline; font-size: 36;"><b>Add {{ object_type }}</b></div>
+
+<br><br>
+
+<form method="post" id="main">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" onclick="clicked(event)" />
+</form>
+
+{% if object_type == "Visit" %}
+<div id="id_netto">Netto: 0</div>
+
+
+<script>
+    function updateNetto() {
+        netto_el = document.getElementById('id_netto')
+        weight_el = document.getElementById('id_weight')
+        boxes_el = document.getElementById('id_number_of_boxes')
+        netto_el.innerHTML = 'Netto: ' + Math.round((weight_el.value - (1.2 * boxes_el.value)) * 100) / 100
+    }
+</script>
+
+<script>
+    weight_el = document.getElementById('id_weight')
+    weight_el.addEventListener(
+        'change',
+        function() {
+            updateNetto()
+        },
+        false
+    );
+
+    boxes_el = document.getElementById('id_number_of_boxes')
+    boxes_el.addEventListener(
+        'change',
+        function() {
+            updateNetto()
+        },
+        false
+    );
+</script>
+
+<script>
+    function clicked(e)
+    {
+        form = document.getElementById('main')
+        if (!form.reportValidity()) {
+            e.preventDefault();
+            return
+        }
+        if(!confirm('Do you confirm data is entered correctly?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+{% endif %}
+
+{% endblock %}
